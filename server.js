@@ -10,7 +10,11 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+// Added in Module 6: in development CLIENT_URL is unset, so cors() falls
+// back to allowing any origin, exactly as it did before. In production it
+// is set to the deployed Vercel URL, so only that frontend can call this API.
+app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
