@@ -26,6 +26,8 @@ app.get('/api/admin-check', protect, adminOnly, (req, res) => {
 app.use('/api/boards', require('./routes/boardRoutes'));
 app.use('/api/cards', require('./routes/cardRoutes'));
 
+app.use('/api/users', require('./routes/userRoutes'));
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
